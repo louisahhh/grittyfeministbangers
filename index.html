@@ -1,0 +1,293 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Louisahhh — for The Buccaneers</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Anton&family=DM+Sans:ital,opsz,wght@0,9..40,400;0,9..40,700;1,9..40,400&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --plum: #2b0f2e;
+    --night: #120716;
+    --cyan: #3ff5f0;
+    --lime: #d4f542;
+    --pink: #ff7ab8;
+    --sky: #7fb8ff;
+    --cream: #fff4e4;
+    --ink: #fff4e4;
+    --muted: #d9b8cf;
+    --line: rgba(255, 244, 228, 0.22);
+    --display: "Anton", "Impact", sans-serif;
+    --body: "DM Sans", system-ui, sans-serif;
+  }
+  * { box-sizing: border-box; }
+  html, body { margin: 0; padding: 0; }
+  body {
+    color: var(--ink);
+    font-family: var(--body);
+    font-size: 16px;
+    line-height: 1.5;
+    min-height: 100vh;
+    background-color: var(--night);
+    background-image:
+      radial-gradient(circle at 12% 8%, rgba(255, 122, 184, 0.55), transparent 38%),
+      radial-gradient(circle at 92% 14%, rgba(63, 245, 240, 0.45), transparent 42%),
+      radial-gradient(circle at 80% 90%, rgba(212, 245, 66, 0.35), transparent 40%),
+      radial-gradient(circle at 10% 92%, rgba(127, 184, 255, 0.4), transparent 42%),
+      linear-gradient(180deg, var(--plum), var(--night));
+    background-attachment: fixed;
+  }
+  .wrap { max-width: 720px; margin: 0 auto; padding: 40px 16px 80px; }
+
+  header { text-align: center; padding: 8px 0 36px; }
+  .eyebrow {
+    display: inline-block;
+    font-family: var(--body);
+    font-weight: 700;
+    font-size: 12px;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--lime);
+    margin-bottom: 14px;
+  }
+  h1 {
+    font-family: var(--display);
+    font-weight: 400;
+    font-size: clamp(64px, 18vw, 128px);
+    line-height: 0.92;
+    text-transform: uppercase;
+    margin: 0;
+    color: var(--cyan);
+    text-shadow: 0 0 18px rgba(63, 245, 240, 0.55), 3px 3px 0 var(--pink);
+    letter-spacing: 0.01em;
+  }
+  .tagline {
+    font-family: var(--display);
+    font-size: clamp(20px, 5vw, 28px);
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+    color: var(--lime);
+    margin: 18px auto 0;
+    max-width: 22ch;
+    line-height: 1.15;
+  }
+  .pitch { color: var(--muted); margin: 18px auto 0; max-width: 46ch; font-size: 15px; }
+
+  .filters { display: flex; flex-wrap: wrap; justify-content: center; gap: 8px; margin: 0 0 40px; }
+  .chip {
+    font-family: var(--body);
+    font-weight: 700;
+    font-size: 13px;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    background: transparent;
+    color: var(--cream);
+    border: 2px solid var(--cream);
+    padding: 7px 14px;
+    border-radius: 999px;
+    cursor: pointer;
+  }
+  .chip[aria-pressed="true"] { background: var(--lime); border-color: var(--lime); color: var(--night); }
+  .chip:focus-visible, .btn:focus-visible { outline: 3px solid var(--cyan); outline-offset: 3px; }
+
+  section.project { margin-bottom: 48px; }
+  section.project h2 {
+    font-family: var(--display);
+    font-weight: 400;
+    font-size: clamp(30px, 8vw, 44px);
+    text-transform: uppercase;
+    line-height: 1;
+    margin: 0 0 6px;
+    color: var(--pink);
+  }
+  .project-meta {
+    font-size: 12px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.14em;
+    color: var(--sky);
+    margin: 0 0 16px;
+  }
+
+  .track {
+    background: var(--cream);
+    color: var(--night);
+    border-radius: 14px;
+    padding: 16px 18px;
+    margin-bottom: 12px;
+    box-shadow: 4px 4px 0 var(--pink);
+  }
+  .track.hidden { display: none; }
+  .track-title {
+    font-family: var(--display);
+    font-weight: 400;
+    font-size: 26px;
+    text-transform: uppercase;
+    line-height: 1.05;
+    margin: 0 0 8px;
+  }
+  .tags { display: flex; flex-wrap: wrap; gap: 6px; margin: 0 0 12px; }
+  .tag {
+    font-size: 11px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    background: var(--night);
+    color: var(--lime);
+    padding: 3px 9px;
+    border-radius: 999px;
+  }
+  .links { display: flex; flex-wrap: wrap; gap: 8px; }
+  .btn {
+    font-family: var(--body);
+    font-weight: 700;
+    font-size: 13px;
+    text-decoration: none;
+    color: var(--night);
+    background: transparent;
+    border: 2px solid var(--night);
+    padding: 6px 13px;
+    border-radius: 999px;
+    transition: background 0.15s, color 0.15s;
+  }
+  .btn:hover { background: var(--night); color: var(--cream); }
+  .btn.primary { background: var(--cyan); border-color: var(--night); }
+  .btn.primary:hover { background: var(--night); color: var(--cyan); }
+  .no-links { font-size: 13px; font-style: italic; color: #6a4b63; }
+
+  footer {
+    margin-top: 56px;
+    text-align: center;
+    font-size: 13px;
+    color: var(--muted);
+    border-top: 1px solid var(--line);
+    padding-top: 22px;
+  }
+  footer a { color: var(--cyan); font-weight: 700; }
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <header>
+    <div class="eyebrow">Louisahhh · for The Buccaneers</div>
+    <h1>Louisahhh</h1>
+    <p class="tagline">gritty feminist anthems about longing (that you can dance to)</p>
+    <p class="pitch">Pick a mood, click through, and listen in full wherever you like. Bandcamp has the full masters.</p>
+  </header>
+
+  <nav class="filters" aria-label="Filter by mood">
+    <button class="chip" aria-pressed="true" data-filter="all">all</button>
+    <button class="chip" aria-pressed="false" data-filter="dark">dark</button>
+    <button class="chip" aria-pressed="false" data-filter="longing">longing</button>
+    <button class="chip" aria-pressed="false" data-filter="rage">rage</button>
+    <button class="chip" aria-pressed="false" data-filter="banger">banger</button>
+    <button class="chip" aria-pressed="false" data-filter="bratty">bratty</button>
+  </nav>
+
+  <main id="catalog"></main>
+
+  <footer>
+    Louisahhh · <a href="https://louisahhh.bandcamp.com">bandcamp</a> · <a href="https://fyeahconsent.com">F Yeah Consent</a>
+    <br>Contact for sync: <a href="mailto:louisahhh@gmail.com">louisahhh@gmail.com</a>
+  </footer>
+
+</div>
+
+<script>
+  // ---------------------------------------------------------------
+  // EDIT HERE. Add a link by filling in the URL. Empty links hide.
+  // Order of buttons on each row: Bandcamp first, Spotify last.
+  // ---------------------------------------------------------------
+  const PROJECTS = [
+    {
+      name: "Louisahhh & Maelstrom",
+      meta: "collab",
+      tracks: [
+        { title: "War in Me", tags: ["dark", "longing"], links: { youtube: "https://www.youtube.com/watch?v=GX-U_qjJn80" } },
+        { title: "Vixen", tags: ["rage", "banger"], links: { youtube: "https://youtu.be/k0fnHbGDVRY" } }
+      ]
+    },
+    {
+      name: "Louisahhh",
+      meta: "solo",
+      tracks: [
+        { title: "Change", tags: ["longing", "banger"], links: { youtube: "https://youtu.be/0A9OkdNn2VE" } },
+        { title: "Ego", tags: ["dark", "rage"], links: {} },
+        { title: "Want", tags: ["longing", "banger"], links: { youtube: "https://youtu.be/W-9TIM-izHM" } },
+        { title: "Hey Trouble", tags: ["dark", "rage", "longing"], links: { youtube: "https://youtu.be/JkxsHUOuZqc" } },
+        { title: "Hunter / Wolf", tags: ["longing", "dark"], links: { youtube: "https://youtu.be/3aVVWpWmdSE" } }
+      ]
+    },
+    {
+      name: "Louisahhh & Helsmoortel",
+      meta: "collab",
+      tracks: [
+        { title: "What I Want", tags: ["banger", "bratty"], links: { youtube: "https://youtu.be/LgjPY_2orO8" } },
+        { title: "Irritant", tags: ["dark", "rage"], links: { soundcloud: "https://soundcloud.com/clubhelsmoortel/sets/helsmoortel-x-louisahhh-part-2/s-c5urMxTNpZl" } }
+      ]
+    },
+    {
+      name: "Wicked Girls",
+      meta: "with Kimi Recor",
+      tracks: [
+        { title: "Like a Knife", tags: ["longing", "dark"], links: { youtube: "https://www.youtube.com/watch?v=DW5oQTu15Uo" } },
+        { title: "Bleeding Better", tags: ["banger"], links: { youtube: "https://youtu.be/kz3lEZqAc_4" } }
+      ]
+    },
+    {
+      name: "Pain Magazine",
+      meta: "label",
+      tracks: [
+        { title: "Like A Storm", tags: ["dark", "longing"], links: { youtube: "https://youtu.be/21RAflxFFKg" } },
+        { title: "Magic", tags: ["bratty", "banger"], links: { youtube: "https://youtu.be/FpNK1yelcQk" } },
+        { title: "Good Hunter", tags: ["dark", "longing"], links: { youtube: "https://youtu.be/lZPUdPhdp7M" } },
+        { title: "Dead Meat", tags: ["bratty", "banger"], links: { youtube: "https://youtu.be/2jIpJqkGTW8" } }
+      ]
+    }
+  ];
+
+  const LABELS = { bandcamp: "Bandcamp", apple: "Apple Music", youtube: "YouTube", soundcloud: "SoundCloud", spotify: "Spotify" };
+  const ORDER = ["bandcamp", "apple", "youtube", "soundcloud", "spotify"];
+
+  const catalog = document.getElementById("catalog");
+
+  function render(filter) {
+    catalog.innerHTML = "";
+    PROJECTS.forEach(project => {
+      const section = document.createElement("section");
+      section.className = "project";
+      section.innerHTML = `<h2>${project.name}</h2><p class="project-meta">${project.meta}</p>`;
+      project.tracks.forEach(track => {
+        const row = document.createElement("div");
+        const show = filter === "all" || track.tags.includes(filter);
+        row.className = "track" + (show ? "" : " hidden");
+        const tags = track.tags.map(t => `<span class="tag">${t}</span>`).join("");
+        const buttons = ORDER
+          .filter(k => track.links[k])
+          .map(k => `<a class="btn${k === "bandcamp" ? " primary" : ""}" href="${track.links[k]}" target="_blank" rel="noopener">${LABELS[k]}</a>`)
+          .join("");
+        row.innerHTML = `
+          <h3 class="track-title">${track.title}</h3>
+          <div class="tags">${tags}</div>
+          <div class="links">${buttons || '<span class="no-links">links coming</span>'}</div>`;
+        section.appendChild(row);
+      });
+      catalog.appendChild(section);
+    });
+  }
+
+  document.querySelectorAll(".chip").forEach(chip => {
+    chip.addEventListener("click", () => {
+      document.querySelectorAll(".chip").forEach(c => c.setAttribute("aria-pressed", "false"));
+      chip.setAttribute("aria-pressed", "true");
+      render(chip.dataset.filter);
+    });
+  });
+
+  render("all");
+</script>
+</body>
+</html>
